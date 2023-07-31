@@ -1,0 +1,16 @@
+:root {
+  --primary: crimson;
+  --dark: black;
+  --light: white;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Fira sans', sans-serif;
+}
+
+body {
+  background: var(--dark);
+  color: var(--light);
+}
