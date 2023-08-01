@@ -8,9 +8,87 @@
   box-sizing: border-box;
   margin: 0;
   font-family: 'Fira sans', sans-serif;
+  font-size: large;
 }
 
 body {
   background: var(--dark);
   color: var(--light);
+  margin: auto;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 20% 60% 20%;
+  grid-template-columns: 20% 60% 20%;
+}
+
+.clock{
+  grid-row: 2/3;
+  grid-column: 2/3;
+  margin: auto;
+}
+.time{
+  text-align: center;
+  margin: 1em 1em 1em 1em;
+  font-size: xx-large;
+}
+
+player-component {
+  border: 5px solid white;
+  background: green;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.player-component-wraper {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.player-top {
+  grid-row: 1/2;
+  grid-column: 2/3;
+
+}
+
+.player-bottom {
+  grid-row: 3/4;
+  grid-column: 2/3;
+}
+
+.player-left {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.player-right {
+  grid-row: 2/3;
+  grid-column: 3/4;
+}
+
+.player-bottom p {
+  font-size: xx-large;
+}
+
+.player-top p {
+  transform-origin: center;
+  transform: rotate(180deg);
+  font-size: xx-large;
+
+}
+
+.player-left p {
+  transform-origin: center;
+  transform: rotate(90deg);
+  font-size: xx-large;
+}
+
+.player-right p {
+  transform-origin: center;
+  transform: rotate(-90deg);
+  font-size: xx-large;
 }

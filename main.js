@@ -3,6 +3,7 @@ const timeEl = document.querySelector('.clock .time');
 const startButton = document.getElementById('start');
 const stopButton = document.getElementById('stop')
 const resetButton = document.getElementById('reset')
+const playersTime = document.getElementsByTagName('player-component')
 
 let seconds = 0;
 let interval = null;
@@ -13,7 +14,7 @@ startButton.addEventListener('click', start);
 stopButton.addEventListener('click', stop);
 resetButton.addEventListener('click', reset);
 
-// Update the timer
+// Util for formatting time
 function secondsToHHMMSS(seconds) {
   
   let hh = Math.floor(seconds / 3600)
@@ -26,6 +27,7 @@ function secondsToHHMMSS(seconds) {
     .join(":")
 }
 
+// Timer functions
 function timer() {
   seconds++;
   timeEl.innerText = secondsToHHMMSS(seconds);
@@ -48,10 +50,10 @@ function reset() {
   stop()
   seconds = 0
   timeEl.innerText = secondsToHHMMSS(seconds)
-  playerTime = [0, 0, 0, 0]
+  resetPlayersTime()
 }
 
-// Player function
+// Player function return time on clock and resets to 0, starts timer if not yet started
 function consumeTime(){
   if (interval) {
     const res = seconds
@@ -62,5 +64,12 @@ function consumeTime(){
     start()
     return 0
   }
+}
+
+function resetPlayersTime(){
+  for (var i = 0; i < playersTime.length; i++) {
+    console.log(playersTime[i]); //second console output
+    playersTime[i].resetTime();
+  }  
 }
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,22 +9,25 @@
 
   <link rel="stylesheet" href="main.css" />
 </head>
+
 <body>
+  <player-component class="player-top"></player-component>
+  <player-component class="player-left"></player-component>
   <div class="clock">
+    <div class="time">
+      00:00
+    </div>
     <div class="controls">
       <button id="start">Start</button>
       <button id="stop">Stop</button>
       <button id="reset">Reset</button>
     </div>
-    <div class="time">
-      Waiting for first tile
-    </div>
-    <player-component></player-component>
-    <player-component></player-component>
-    <player-component></player-component>
-    <player-component></player-component>
   </div>
+    <player-component class="player-right"></player-component>
+    <player-component class="player-bottom"></player-component>
+  
   <script src="main.js"></script>
   <script src="playerComponent.js"></script> <!-- where header.js is the name of our reusable component script -->
 </body>
+
 </html>
