@@ -18,8 +18,8 @@ body {
   padding: 5em 5em 5em 5em;
   height: 100vh;
   display: grid;
-  grid-template-rows: 20% 20% 20% 20% 20%;
-  grid-template-columns: 30% 40% 30%;
+  grid-template-rows: 20% 20% minmax(min-content, 20%) 20% 20%;
+  grid-template-columns: 30% minmax(min-content, 40%) 30%;
 }
 
 .clock {
