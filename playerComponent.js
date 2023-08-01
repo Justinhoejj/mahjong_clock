@@ -19,7 +19,6 @@ class Player extends HTMLElement {
   }
 
   resetTime() {
-    console.log('resetTime called')
     this.seconds = 0
     this.innerHTML = playerHTMLContent(this.seconds)
   }

@@ -1,7 +1,6 @@
 // Global variables
 const timeEl = document.querySelector('.clock .time');
-const startButton = document.getElementById('start');
-const stopButton = document.getElementById('stop')
+const startStopButton = document.getElementById('startStop');
 const resetButton = document.getElementById('reset')
 const playersTime = document.getElementsByTagName('player-component')
 
@@ -10,8 +9,7 @@ let interval = null;
 let playerTime = [0, 0, 0, 0]
 
 // Events listeners
-startButton.addEventListener('click', start);
-stopButton.addEventListener('click', stop);
+startStopButton.addEventListener('click', startStop);
 resetButton.addEventListener('click', reset);
 
 // Util for formatting time
@@ -33,21 +31,28 @@ function timer() {
   timeEl.innerText = secondsToHHMMSS(seconds);
 }
 
-function start() {
+function startStop() {
   if (interval) {
-    return;
+    stopTimer()
+  } else {
+    startTimer()
   }
-
-  interval = setInterval(timer, 1000);
+}
+function startTimer() {
+    interval = setInterval(timer, 1000);
+    startStopButton.innerText = 'Pause'
+    startStopButton.className = 'pause-button'
 }
 
-function stop() {
-  clearInterval(interval);
-  interval = null
+function stopTimer() {
+    clearInterval(interval);
+    interval = null
+    startStopButton.innerText = 'Play'
+    startStopButton.className = 'play-button'
 }
 
 function reset() {
-  stop()
+  stopTimer()
   seconds = 0
   timeEl.innerText = secondsToHHMMSS(seconds)
   resetPlayersTime()
@@ -61,7 +66,7 @@ function consumeTime(){
     seconds = 0
     return res;
   } else {
-    start()
+    startTimer()
     return 0
   }
 }
