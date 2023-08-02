@@ -4,6 +4,8 @@ const initPlayerHTMLContent = `
             Press to start
           </p>
         </div>`;
+const audio = new Audio('./sfx/player-click.mp3');
+    
 
 function playerHTMLContent(seconds) {
   return `<div class="player-component-wraper">
@@ -21,10 +23,19 @@ class Player extends HTMLElement {
     this.glow(true)
     this.addEventListener('click', () => {
       // Consume current time on clock and uptdate total time
+      if (this.seconds == 0) {
+        // Turn off glowing animation on first click
+        this.glow(false)
+      }
       this.seconds += consumeTime();
+      this.onClickEffects()
       this.innerHTML = playerHTMLContent(this.seconds);
-      this.glow(false)
     })
+  }
+
+  onClickEffects() {
+    audio.play()
+    return
   }
 
   glow(on) {
@@ -38,6 +49,7 @@ class Player extends HTMLElement {
   resetTime() {
     this.seconds = 0;
     this.innerHTML = initPlayerHTMLContent;
+    this.glow(true)
   };
 }
 
