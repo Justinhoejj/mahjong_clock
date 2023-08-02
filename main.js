@@ -1,5 +1,5 @@
 // Global variables
-const timeEl = document.querySelector('.clock .time');
+const timeEl = document.getElementById('time');
 const startStopButton = document.getElementById('startStop');
 const resetButton = document.getElementById('reset')
 const playersTime = document.getElementsByTagName('player-component')
@@ -18,7 +18,7 @@ function secondsToHHMMSS(seconds) {
   let hh = Math.floor(seconds / 3600)
   let mm = Math.floor(seconds / 60) % 60
   let ss = seconds % 60
-
+  
   return [hh, mm, ss]
     .map(v => v < 10 ? "0" + v : v)
     .filter((v, i) => v !== "00" || i > 0)
@@ -42,6 +42,8 @@ function startTimer() {
     interval = setInterval(timer, 1000);
     startStopButton.innerText = 'Pause'
     startStopButton.className = 'pause-button'
+    timeEl.className='time time-start'
+    timeEl.style.animationPlayState = "running";
 }
 
 function stopTimer() {
@@ -49,12 +51,14 @@ function stopTimer() {
     interval = null
     startStopButton.innerText = 'Play'
     startStopButton.className = 'play-button'
+    timeEl.style.animationPlayState = "paused";
 }
 
 function reset() {
   stopTimer()
   seconds = 0
   timeEl.innerText = secondsToHHMMSS(seconds)
+  timeEl.className ='time'
   resetPlayersTime()
 }
 
