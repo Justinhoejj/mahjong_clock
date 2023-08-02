@@ -8,9 +8,15 @@
   <title>Mahjong Clock</title>
 
   <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="playerComponent.css" />
 </head>
 
 <body>
+  <div class="settings">
+    <p>Time Limit:</p>
+    <input type="number" value=180 class="time-limit-input-enabled" id="time-limit"></input> Seconds
+  </div>
+  <div class="console">
   <player-component class="player-top"></player-component>
   <player-component class="player-left"></player-component>
   <div class="clock">
@@ -22,9 +28,10 @@
   </div>
     <player-component class="player-right"></player-component>
     <player-component class="player-bottom"></player-component>
+  </div>
   
   <script src="main.js"></script>
-  <script src="playerComponent.js"></script> <!-- where header.js is the name of our reusable component script -->
+  <script src="playerComponent.js"></script> 
 </body>
 
 </html>

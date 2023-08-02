@@ -1,4 +1,5 @@
 // Global variables
+const timeLimitInput = document.getElementById('time-limit');
 const timeEl = document.getElementById('time');
 const startStopButton = document.getElementById('startStop');
 const resetButton = document.getElementById('reset')
@@ -6,7 +7,6 @@ const playersTime = document.getElementsByTagName('player-component')
 
 let seconds = 0;
 let interval = null;
-let playerTime = [0, 0, 0, 0]
 
 // Events listeners
 startStopButton.addEventListener('click', startStop);
@@ -25,6 +25,18 @@ function secondsToHHMMSS(seconds) {
     .join(":")
 }
 
+// Time limit function
+function retrieveAndDisableTimeLimit() {
+  timeLimitInput.disabled = true
+  timeLimitInput.className = 'time-limit-input-disabled'
+  return timeLimitInput.value
+}
+
+function enableTimeLimit() {
+  timeLimitInput.disabled = false
+  timeLimitInput.className = 'time-limit-input-enabled'
+}
+
 // Timer functions
 function timer() {
   seconds++;
@@ -40,16 +52,17 @@ function startStop() {
 }
 function startTimer() {
     interval = setInterval(timer, 1000);
-    startStopButton.innerText = 'Pause'
     startStopButton.className = 'pause-button'
     timeEl.className='time time-start'
     timeEl.style.animationPlayState = "running";
+    
+    // Once timer has started disable time limit change, only enable upon reset
+    retrieveAndDisableTimeLimit()
 }
 
 function stopTimer() {
     clearInterval(interval);
     interval = null
-    startStopButton.innerText = 'Play'
     startStopButton.className = 'play-button'
     timeEl.style.animationPlayState = "paused";
 }
@@ -60,6 +73,7 @@ function reset() {
   timeEl.innerText = secondsToHHMMSS(seconds)
   timeEl.className ='time'
   resetPlayersTime()
+  enableTimeLimit()
 }
 
 // Player function return time on clock and resets to 0, starts timer if not yet started
