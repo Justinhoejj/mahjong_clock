@@ -1,5 +1,5 @@
 const initPlayerHTMLContent = `
-        <div class="player-component-wraper">
+        <div class="player-component-wraper player-start-text">
           <p class="player-text">
             Press To Start
           </p>
@@ -7,21 +7,6 @@ const initPlayerHTMLContent = `
 const audio = new Audio('./sfx/player-click.mp3');
     
 
-function playerHTMLContent(seconds) {
-  if (seconds < 0) {
-    // Render exceeded time limit
-    return `<div class="player-component-wraper">
-            <p class="player-time-flash-red">
-              - ${secondsToHHMMSS(seconds * - 1)}
-            </p>
-          </div>`;  
-  }
-  return `<div class="player-component-wraper">
-            <p class="player-time">
-              ${secondsToHHMMSS(seconds)}
-            </p>
-          </div>`;
-}
 
 class Player extends HTMLElement {
   constructor() {
@@ -38,10 +23,17 @@ class Player extends HTMLElement {
         // Get time limit
         this.timeLimit = retrieveAndDisableTimeLimit()
       }
-      this.secondsPassed += consumeTime();
+      let timeToConsume = consumeTime();
       this.onClickEffects()
-      this.innerHTML = playerHTMLContent(this.timeLimit - this.secondsPassed);
+      this.secondsPassed += timeToConsume
+      this.innerHTML = this.playerHTMLContent(this.timeLimit - this.secondsPassed, timeToConsume, this.timeLimit);
     })
+  }
+
+  timeConsumedComponent(timeConsumed) {
+    return `<div class="player-consumed-time-animated">
+              <p id="player-consumed-time-value">- ${timeConsumed}</p>
+            </div>`
   }
 
   onClickEffects() {
@@ -51,7 +43,7 @@ class Player extends HTMLElement {
 
   glow(on) {
     if (on) {
-      this.style.animation = 'glowing 1300ms infinite';
+      this.style.animation = 'glowing 4s infinite';
     } else {
       this.style.animation = null;
     };
@@ -62,6 +54,34 @@ class Player extends HTMLElement {
     this.innerHTML = initPlayerHTMLContent;
     this.glow(true)
   };
+
+  playerHTMLContent(seconds, timeConsumed, timeLimit) {
+    if (seconds < 0) {
+      this.className += ' player-component-time-exceeded'
+      return `<div class="player-component-wraper">
+              ${this.timeConsumedComponent(timeConsumed)}
+              <p class="player-time-value">
+                - ${secondsToHHMMSS(seconds * - 1)}
+              </p>
+            </div>`;  
+    }
+    if (seconds / timeLimit < 0.2 || seconds < 60) {
+      // Render exceeded time limit
+      return `<div class="player-component-wraper">
+              ${this.timeConsumedComponent(timeConsumed)}
+              <p class="player-time-flash-red">
+                ${secondsToHHMMSS(seconds)}
+              </p>
+            </div>`;  
+    }
+  
+    return `<div class="player-component-wraper">
+            ${this.timeConsumedComponent(timeConsumed)}
+            <p class="player-time">
+              ${secondsToHHMMSS(seconds)}
+            </p>
+            </div>`;
+  }
 }
 
 customElements.define("player-component", Player);

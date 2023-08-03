@@ -47,8 +47,8 @@ animation: glowing 1300ms infinite;
   box-shadow: 0 0 5px #fdfdfd;
 }
 50% {
-  background-color: #6fdf4d;
-  box-shadow: 0 0 20px #6fdf4d;
+  background-color: #a9eb95;
+  box-shadow: 0 0 20px #6aee42;
 }
 100% {
   background-color: #fdfdfd;
@@ -63,7 +63,29 @@ top: 50%;
 left: 50%;
 -ms-transform: translate(-50%, -50%);
 transform: translate(-50%, -50%);
-font-size: xx-large;
+font-size: 5em;
+white-space: nowrap;
+display: flex;
+}
+
+.player-time{
+  animation: fade-out-in 2s;
+}
+
+.player-start-text{
+font-size: x-large;
+color: var(--dark);
+}
+
+.player-consumed-time-animated {
+  position: absolute;
+  color:red !important;
+  font-size: 1em;
+  top:50%;
+  left:50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
 }
 
 .player-top {
@@ -80,6 +102,93 @@ grid-column: 3/4;
 grid-row: 2/5;
 grid-column: 1/2;
 }
+
+
+@keyframes fade-out-in {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out-bottom {
+  2% {
+    opacity: 1;
+    transform: translate(0.3em, 0.1em);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0.3em, 0.5em);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0.3em,1em);
+  }
+}
+
+@keyframes fade-out-top {
+  2% {
+    opacity: 1;
+    transform: translate(-1.4em, -1.2em);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-1.4em, -1.6em);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-1.4em, -2.1em);
+  }
+}
+
+@keyframes fade-out-left {
+  2% {
+    opacity: 1;
+    transform: translate(-1.4em, 0.3em);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-1.8em, 0.3em);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-2.3em, 0.3em);
+  }
+}
+
+@keyframes fade-out-right {
+  2% {
+    opacity: 1;
+    transform: translate(0.5em, -1.5em);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(1em, -1.5em);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(1.5em, -1.5em);
+  }
+}
+
+.player-top .player-consumed-time-animated{
+  animation: fade-out-top 1.5s;
+}
+
+.player-right .player-consumed-time-animated{
+  animation: fade-out-right 1.5s;
+}
+
+.player-bottom .player-consumed-time-animated{
+  animation: fade-out-bottom 1.5s;
+}
+
+.player-left .player-consumed-time-animated{
+  animation: fade-out-left 1.5s;
+}
+
 
 .player-right {
 grid-row: 2/5;
@@ -110,11 +219,15 @@ font-size: inherit;
 
 .player-time-flash-red{
   color: red;
-  animation: blinker 2s linear infinite;
+  animation: blinker 1s linear infinite;
+}
+
+.player-component-time-exceeded {
+  color: red;
 }
 
 @keyframes blinker {
-  50% {
-    opacity: 0.2;
+  40% {
+    opacity: 0.3;
   }
 }
