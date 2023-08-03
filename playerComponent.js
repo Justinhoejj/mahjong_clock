@@ -32,7 +32,7 @@ class Player extends HTMLElement {
 
   timeConsumedComponent(timeConsumed) {
     return `<div class="player-consumed-time-animated">
-              <p id="player-consumed-time-value">- ${timeConsumed}</p>
+              <p id="player-consumed-time-value">-${timeConsumed}</p>
             </div>`
   }
 
