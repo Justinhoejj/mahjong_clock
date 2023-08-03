@@ -136,5 +136,9 @@ function configureAudioAndDisableInputs(shouldDisable){
     gameInProgress = true
   } else {
     gameInProgress = false
+    audioInputTop.disabled = false
+    audioInputRight.disabled = false
+    audioInputBottom.disabled = false
+    audioInputLeft.disabled = false
   }
 }

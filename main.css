@@ -12,7 +12,6 @@
   box-sizing: border-box;
   margin: 0;
   font-family: 'Fira sans', sans-serif;
-  font-size: small;
 }
 
 body {
@@ -35,7 +34,6 @@ body {
 
 .settings{
   color: var(--light);
-  display: flex;
   margin: 1em 3em 1em;
   font-size: xx-large;
 }
@@ -43,7 +41,8 @@ body {
 .settings-time-limit{
   color: var(--light);
   display: flex;
-  width: 50%;
+  width: 40%;
+  height: 20%;
   font-size: inherit;
 }
 
@@ -65,15 +64,33 @@ body {
 .time-limit-input-disabled{
   size: large;
   color: var(--light);
-  margin: 0em 0.5em 0em 1em;
+  margin: 0em 0.3em 0em 1em;
   background: transparent;
   width: 3em;
   font-size: inherit;
 }
 
 .settings-sounds{
-  color: #f03;
+  color: var(--light);
+  font-size: xx-large;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  flex-wrap: wrap;
 }
+
+.settings-sounds p {
+  font-size: inherit;
+}
+
+.settings-sounds select{
+  border: 1px solid var(--light);
+  background: var(--dark);
+  color: inherit;
+  font-size: large;
+  margin-left: -3em;
+}
+
 
 .clock {
   grid-row: 3/4;
