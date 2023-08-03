@@ -11,6 +11,13 @@ let interval = null;
 // Events listeners
 startStopButton.addEventListener('click', startStop);
 resetButton.addEventListener('click', reset);
+timeLimitInput.addEventListener('keydown', (e) => {
+  console.log(e.target.value)
+  if(e.key == '-' ) {
+        e.preventDefault();
+        return false;
+    }
+})
 
 // Util for formatting time
 function secondsToHHMMSS(seconds) {
@@ -91,7 +98,6 @@ function consumeTime(){
 
 function resetPlayersTime(){
   for (var i = 0; i < playersTime.length; i++) {
-    console.log(playersTime[i]); //second console output
     playersTime[i].resetTime();
   }  
 }
