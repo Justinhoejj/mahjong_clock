@@ -7,6 +7,9 @@ const playersTime = document.getElementsByTagName('player-component')
 
 let seconds = 0;
 let interval = null;
+let gameInProgress = false;
+
+
 
 // Events listeners
 startStopButton.addEventListener('click', startStop);
@@ -64,7 +67,11 @@ function startTimer() {
     timeEl.style.animationPlayState = "running";
     
     // Once timer has started disable time limit change, only enable upon reset
-    retrieveAndDisableTimeLimit()
+    if (!gameInProgress) {
+      configureAudioAndDisableInputs(true)
+      retrieveAndDisableTimeLimit()
+    }
+    
 }
 
 function stopTimer() {
@@ -100,5 +107,34 @@ function resetPlayersTime(){
   for (var i = 0; i < playersTime.length; i++) {
     playersTime[i].resetTime();
   }  
+  configureAudioAndDisableInputs(false)
 }
 
+function configureAudioAndDisableInputs(shouldDisable){
+  if(shouldDisable) {
+    // Audio Inputs
+    const audioInputTop = document.querySelector('.top-sound-input select[id="sound-select"]')
+    const audioInputRight = document.querySelector('.right-sound-input select[id="sound-select"]')
+    const audioInputBottom = document.querySelector('.bottom-sound-input select[id="sound-select"]')
+    const audioInputLeft = document.querySelector('.left-sound-input select[id="sound-select"]')
+
+    // Buttons
+    const playerTop = document.querySelector('.player-top')
+    const playerLeft = document.querySelector('.player-left')
+    const playerRight = document.querySelector('.player-right')
+    const playerBottom = document.querySelector('.player-bottom')
+    audioInputTop.disabled = true
+    audioInputRight.disabled = true
+    audioInputBottom.disabled = true
+    audioInputLeft.disabled = true
+
+    playerTop.setAudioPath(audioInputTop.value)
+    playerLeft.setAudioPath(audioInputLeft.value)
+    playerRight.setAudioPath(audioInputRight.value)
+    playerBottom.setAudioPath(audioInputBottom.value)
+
+    gameInProgress = true
+  } else {
+    gameInProgress = false
+  }
+}

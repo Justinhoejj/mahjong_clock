@@ -4,8 +4,6 @@ const initPlayerHTMLContent = `
             Press To Start
           </p>
         </div>`;
-const audio = new Audio('./sfx/player-click.mp3');
-    
 
 
 class Player extends HTMLElement {
@@ -13,6 +11,7 @@ class Player extends HTMLElement {
     super();
     this.secondsPassed = 0
     this.timeLimit = 0
+    this.audio = new Audio('./sfx/player-click.mp3');
     this.innerHTML = initPlayerHTMLContent;
     this.glow(true)
     this.addEventListener('click', () => {
@@ -30,6 +29,9 @@ class Player extends HTMLElement {
     })
   }
 
+  setAudioPath(path) {
+    this.audio = new Audio(path)
+  }
   timeConsumedComponent(timeConsumed) {
     return `<div class="player-consumed-time-animated">
               <p id="player-consumed-time-value">-${timeConsumed}</p>
@@ -37,7 +39,7 @@ class Player extends HTMLElement {
   }
 
   onClickEffects() {
-    audio.play()
+    this.audio.play()
     return
   }
 

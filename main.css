@@ -35,13 +35,19 @@ body {
 
 .settings{
   color: var(--light);
-  margin: 1em 3em 1em;
   display: flex;
+  margin: 1em 3em 1em;
   font-size: xx-large;
-  width: 50%;
 }
 
-.settings p{
+.settings-time-limit{
+  color: var(--light);
+  display: flex;
+  width: 50%;
+  font-size: inherit;
+}
+
+.settings-time-limit p{
   color: var(--light);
   font-size: inherit;
 }
@@ -63,6 +69,10 @@ body {
   background: transparent;
   width: 3em;
   font-size: inherit;
+}
+
+.settings-sounds{
+  color: #f03;
 }
 
 .clock {
