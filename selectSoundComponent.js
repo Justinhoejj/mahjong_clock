@@ -5,7 +5,7 @@ class SelectSound extends HTMLElement {
       <option value="sfx/player-click.mp3">Key</option>
       <option value="sfx/mouse-click.mp3">Mouse</option>
       <option value="sfx/light-switch.mp3">Light</option>
-      <option value="sfx/shooting-sfx.mp3">Plop</option>
+      <option value="sfx/shooting-sfx.mp3">Bop</option>
     </select>`
     }
 }

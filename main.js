@@ -111,13 +111,12 @@ function resetPlayersTime(){
 }
 
 function configureAudioAndDisableInputs(shouldDisable){
+   // Audio Inputs
+   const audioInputTop = document.querySelector('.top-sound-input select[id="sound-select"]')
+   const audioInputRight = document.querySelector('.right-sound-input select[id="sound-select"]')
+   const audioInputBottom = document.querySelector('.bottom-sound-input select[id="sound-select"]')
+   const audioInputLeft = document.querySelector('.left-sound-input select[id="sound-select"]')
   if(shouldDisable) {
-    // Audio Inputs
-    const audioInputTop = document.querySelector('.top-sound-input select[id="sound-select"]')
-    const audioInputRight = document.querySelector('.right-sound-input select[id="sound-select"]')
-    const audioInputBottom = document.querySelector('.bottom-sound-input select[id="sound-select"]')
-    const audioInputLeft = document.querySelector('.left-sound-input select[id="sound-select"]')
-
     // Buttons
     const playerTop = document.querySelector('.player-top')
     const playerLeft = document.querySelector('.player-left')
