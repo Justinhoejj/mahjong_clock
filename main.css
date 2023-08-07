@@ -25,7 +25,7 @@ body {
   background: var(--dark);
   color: var(--light);
   margin: auto;
-  padding: 1em 5em 8em 5em;
+  padding: 1em 2em 8em 2em;
   height: 50vw;
   width: 80vw;
   display: grid;
