@@ -9,6 +9,13 @@ const playerLeft = document.querySelector('.player-left')
 const playerRight = document.querySelector('.player-right')
 const playerBottom = document.querySelector('.player-bottom')
 
+const keyBindingTop = document.querySelector('bind-key-component[id="top-bind-component"]')
+const keyBindingRight = document.querySelector('bind-key-component[id="right-bind-component"]')
+const keyBindingBottom = document.querySelector('bind-key-component[id="bottom-bind-component"]')
+const keyBindingLeft = document.querySelector('bind-key-component[id="left-bind-component"]')
+
+
+
 let seconds = 0;
 let interval = null;
 let gameInProgress = false;
@@ -158,19 +165,15 @@ function addKeyBinding(keyCode) {
     return false;
   }
 
-  const keyBindingTop = document.querySelector('bind-key-component[id="top-bind-component"]')
   if (keyBindingTop.keyCode) {
     keyBindingCache[keyBindingTop.keyCode] = playerTop
   }
-  const keyBindingRight = document.querySelector('bind-key-component[id="right-bind-component"]')
   if (keyBindingRight.keyCode) {
     keyBindingCache[keyBindingRight.keyCode] = playerRight
   }
-  const keyBindingBottom = document.querySelector('bind-key-component[id="bottom-bind-component"]')
   if (keyBindingBottom.keyCode) {
     keyBindingCache[keyBindingBottom.keyCode] = playerBottom
   }
-  const keyBindingLeft = document.querySelector('bind-key-component[id="left-bind-component"]')
   if (keyBindingLeft.keyCode) {
     keyBindingCache[keyBindingLeft.keyCode] = playerLeft
   }

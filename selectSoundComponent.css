@@ -18,6 +18,7 @@
 
 .sound-select select-sound-component {
   padding-top: 0.25em;
+  margin-right: 0.5em;
 }
 
 bind-key-component button {

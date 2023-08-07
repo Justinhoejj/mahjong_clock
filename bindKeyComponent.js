@@ -28,6 +28,7 @@ class BindKey extends HTMLElement {
   }
 
   makeBind() {
+    this.onclick = null
     this.innerHTML = `<button class="bind-button-active">
         Press Key Now
     </button>`

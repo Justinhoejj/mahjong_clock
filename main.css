@@ -45,6 +45,7 @@ body {
   width: max-content;
   height: 20%;
   font-size: inherit;
+  padding-bottom: 1em;
 }
 
 .settings-time-limit p{
