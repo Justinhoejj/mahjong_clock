@@ -13,37 +13,51 @@
 
 <body>
   <div class="settings">
-  <div class="settings-time-limit">
-    <p>Time Limit:</p>
-    <input min="0" type="number" value=180 class="time-limit-input-enabled" id="time-limit"></input> Seconds
-  </div>
-  <div class="settings-sounds">
-    <p>Sound:</p>
-    <p>top - </p><select-sound-component class="top-sound-input" id="top-sound-input"></select-sound-component>
-    <p>right - </p><select-sound-component class="right-sound-input" id="right-sound-input"></select-sound-component>
-    <p>bottom - </p><select-sound-component class="bottom-sound-input" id="bottom-sound-input"></select-sound-component>
-    <p>left - </p><select-sound-component class="left-sound-input" id="left-sound-input"></select-sound-component>
-  </div>
+    <div class="settings-time-limit">
+      <p>Time Limit:</p>
+      <input min="0" type="number" value=180 class="time-limit-input-enabled" id="time-limit"></input> Seconds
+    </div>
+    <div class="settings-sounds">
+      <p>Sound:</p>
+      <div class="sound-select">
+        <p>top - &nbsp</p>
+        <select-sound-component class="top-sound-input" id="top-sound-input"></select-sound-component>
+      </div>
+      <div class="sound-select">
+        <p>right - &nbsp</p>
+        <select-sound-component class="right-sound-input" id="right-sound-input"></select-sound-component>
+      </div>
+      <div class="sound-select">
+        <div>bottom - &nbsp</div>
+        <select-sound-component class="bottom-sound-input" id="bottom-sound-input"></select-sound-component>
+      </div>
+      <div class="sound-select">
+        <p>left - &nbsp</p>
+        <select-sound-component class="left-sound-input" id="left-sound-input"></select-sound-component>
+      </div>
+    </div>
   </div>
   <div>
   </div>
   <div class="console">
-  <player-component class="player-top"></player-component>
-  <player-component class="player-left"></player-component>
-  <div class="clock">
-    <button class="reset-button" id="reset"><p>&#10227;</p></button>
-    <div id="time" class="time">
-      00:00
+    <player-component class="player-top"></player-component>
+    <player-component class="player-left"></player-component>
+    <div class="clock">
+      <button class="reset-button" id="reset">
+        <p>&#10227;</p>
+      </button>
+      <div id="time" class="time">
+        00:00
+      </div>
+      <button class="play-button" id="startStop"></button>
     </div>
-    <button class="play-button" id="startStop"></button>
-  </div>
     <player-component class="player-right"></player-component>
     <player-component class="player-bottom"></player-component>
   </div>
-  
+
   <script src="main.js"></script>
-  <script src="playerComponent.js"></script> 
-  <script src="selectSoundComponent.js"></script> 
+  <script src="playerComponent.js"></script>
+  <script src="selectSoundComponent.js"></script>
 </body>
 
 </html>

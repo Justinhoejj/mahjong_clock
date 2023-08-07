@@ -83,12 +83,27 @@ body {
   font-size: inherit;
 }
 
+.sound-select {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sound-select select-sound-component {
+  padding-top: 0.25em;
+}
+
+.sound-select p{
+  position: relative;
+}
+
 .settings-sounds select{
+  position: relative;
   border: 1px solid var(--light);
   background: var(--dark);
   color: inherit;
   font-size: large;
-  margin-left: -3em;
+  width: 5em
+  
 }
 
 
