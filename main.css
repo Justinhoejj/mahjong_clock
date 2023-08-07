@@ -41,7 +41,7 @@ body {
 .settings-time-limit{
   color: var(--light);
   display: flex;
-  width: 40%;
+  width: max-content;
   height: 20%;
   font-size: inherit;
 }
