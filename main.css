@@ -71,43 +71,6 @@ body {
   font-size: inherit;
 }
 
-.settings-sounds{
-  color: var(--light);
-  font-size: xx-large;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  flex-wrap: wrap;
-}
-
-.settings-sounds p {
-  font-size: inherit;
-}
-
-.sound-select {
-  display: flex;
-  justify-content: space-between;
-}
-
-.sound-select select-sound-component {
-  padding-top: 0.25em;
-}
-
-.sound-select p{
-  width: max-content;
-  position: relative;
-}
-
-.settings-sounds select{
-  position: relative;
-  border: 1px solid var(--light);
-  background: var(--dark);
-  color: inherit;
-  font-size: large;
-  width: 5em
-  
-}
-
 .clock {
   grid-row: 3/4;
   grid-column: 3/4;

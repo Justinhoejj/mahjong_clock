@@ -13,6 +13,7 @@ let seconds = 0;
 let interval = null;
 let gameInProgress = false;
 let keyBindingCache = {};
+let isBinding = false
 
 
 // Events listeners
@@ -143,6 +144,9 @@ function configureAudioAndDisableInputs(shouldDisable) {
 }
 
 function clickRelevantButton(e) {
+  if (isBinding) {
+    return
+  }
   if (keyBindingCache[e.code]) {
     keyBindingCache[e.code].click()
   }
@@ -175,4 +179,8 @@ function addKeyBinding(keyCode) {
 
 function removeKeyBinding(keyCode) {
   delete keyBindingCache[keyCode]
+}
+
+function setIsBinding(bool) {
+  isBinding = bool
 }
