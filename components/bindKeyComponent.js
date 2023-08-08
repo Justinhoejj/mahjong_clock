@@ -32,7 +32,7 @@ class BindKey extends HTMLElement {
     this.innerHTML = `<button class="bind-button-active">
         Press Key Now
     </button>`
-    setIsBinding(true)
+    setIsBinding(true) // Prevent unintended activation of buttons until binding process completed
     const bindKeyAndRemoveListener = (e) => {
       this.keyCode = e.code
       document.removeEventListener("keydown", bindKeyAndRemoveListener);

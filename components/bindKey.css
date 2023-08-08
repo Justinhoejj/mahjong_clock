@@ -1,0 +1,18 @@
+bind-key-component button {
+  border: 1px solid var(--light);
+  border-radius: 2px;
+  background: var(--dark);
+  color: inherit;
+  font-size: medium; 
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+}
+
+.bind-button-active {
+  animation: blinker 0.6s infinite
+}
+
+.bind-button-remove button{
+  border-color: red;
+  color: red;
+}
